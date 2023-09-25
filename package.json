@@ -1,0 +1,20 @@
+{
+  "name": "personal",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "regenerate:models": "ts-node --esm ./generate-models.ts"
+  },
+  "dependencies": {
+    "@kontent-ai/delivery-sdk": "^14.4.0",
+    "@kontent-ai/model-generator": "^6.5.0",
+    "astro": "^3.1.0",
+    "dotenv": "^16.3.1",
+    "ts-node": "^10.9.1"
+  }
+}

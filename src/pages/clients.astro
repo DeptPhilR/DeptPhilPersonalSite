@@ -1,0 +1,27 @@
+---
+import { deliveryClient } from "../lib/kontent";
+
+const clientList = await deliveryClient
+    .items()
+    .type("client")
+    .toPromise()
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"
+  />
+  </head>
+
+
+
+  <body>
+        <ul>
+        {clientList.data.items.map(clientItem => (
+            <li>{clientItem.elements.name.value}</li>
+        ))}
+        </ul>
+    </body>
+</html>
