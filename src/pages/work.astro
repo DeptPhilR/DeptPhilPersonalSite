@@ -8,9 +8,12 @@ import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
 
-const projects = (await getCollection('work')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+import { deliveryClient } from "../lib/kontent";
+
+const clientList = await deliveryClient
+    .items()
+    .type("client")
+    .toPromise()
 ---
 
 <BaseLayout
@@ -24,7 +27,15 @@ const projects = (await getCollection('work')).sort(
 				tagline="See my most recent projects below to get an idea of my past experience."
 				align="start"
 			/>
-		
+			<Grid variant="offset">
+				{
+					clientList.data.items.map((client) => (
+						<li>
+							<PortfolioPreview project={client} />
+						</li>
+					))
+				}
+			</Grid>
 		</main>
 		<ContactCTA />
 	</div>

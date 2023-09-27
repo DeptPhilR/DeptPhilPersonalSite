@@ -16,10 +16,12 @@ import PortfolioPreview from '../components/PortfolioPreview.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Skills from '../components/Skills.astro';
 
+
 import { deliveryClient } from "../lib/kontent";
 
 const clientList = await deliveryClient
     .items()
+	.limitParameter(4)
     .type("client")
     .toPromise()
 
