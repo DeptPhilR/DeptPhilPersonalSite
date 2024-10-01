@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: none
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- task: AccessibilityChecker@1
+  inputs:
+    url: 'https://www.jotun.com/gb-en'
+    testtitle: 'Test homepage'
+    tagoptions: 'wcag2a, wcag2aa, wcag21aa, best-practice'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
